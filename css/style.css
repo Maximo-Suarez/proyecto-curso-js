@@ -1,0 +1,20 @@
+.buscador__filtrador{
+    background: rgb(253,198,29);
+    background: linear-gradient(0deg, rgba(253,198,29,1) 0%, rgba(252,176,69,1) 25%, rgba(253,29,29,1) 100%);
+}
+
+.buscador__empresas{
+    padding: 3rem 0;
+    display: flex;
+    
+}
+
+.empresa__card{
+    padding: 2rem 1rem 3rem 1rem;
+    border: solid .1rem gray;
+    border-radius: .3rem;
+    margin: .5rem ;
+    
+
+}
+

@@ -1,12 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEFE | Tienda</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS -->
+        <link rel="stylesheet" href="../css/style.css">
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!-- Titulo -->
+        <title>SEFE | Tienda</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="#">Tienda</a></li>
+                    <li><a href="./visitanos.html">Visitanos</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h1>Bienvenido a la tienda! ¿Qué deseas llevar?</h1>
+            <section class="container row">
+                <section class="col-10">
+                    <h2>Hechá un vistazo a las empresas de la feria!</h2>
+                    <p>Yyy de paso comprá un producto :)</p>
+                </section>
+                <section class="col-6">
+                    <h3>Usa el buscador (barra lateral) para encontrar el producto que deseas</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates a nostrum soluta praesentium quos quia recusandae repellendus expedita nemo modi. Molestiae explicabo nesciunt veniam eos earum qui aliquam id illo?</p>
+                </section>
+            </section>
+            <section class="tienda__buscador row ">
+                <section id="buscador" class="buscador__filtrador col-3 shadow-lg bg-body rounded">
+                    <section class="container">
+                        <h4 class="fs-1">Elige filtrar por...</h4>
+                        <section class="card shadow-lg">
+                            <div class="card-body">
+                                <div id="boton-1">
+                                    <button type="button" id="comidas" class="btn btn-warning">
+                                        Comidas
+                                    </button>
+                                </div>
+                                <div id="boton-2">
+                                    <button id="bebidas" class="btn btn-warning">
+                                        Bebidas
+                                    </button>
+                                
+                                </div>
+                                <div id="boton-3">
+                                    <button id="regalos" class="btn btn-warning">
+                                        Regalos
+                                    </button>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+                <section id="contenedorCards" class="buscador__empresas col-9 row shadow-lg bg-body rounded">
+                <!-- (cards) -->
+                </section>
+            </section>
+        </main>
     
-</body>
+    
+        <!-- ___________________________JAVASCRIPT___________________________ -->
+        <!-- Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+        <!-- main.js -->
+        <script src="../js/variables.js"></script>
+        <script src="../js/main.js"></script>
+    
+    </body>    
 </html>
