@@ -1,0 +1,30 @@
+/* function verProductos(deEstaEmpresa ) {
+    let empresaRelacionada = empresas.find((empresa) => empresa.numStand === deEstaEmpresa)
+    let contenedorCards = document.getElementById("contenedorCards");
+    let cards= contenedorCards.childNodes;
+    console.log(cards)
+    let cardSeleccionada = cards[deEstaEmpresa];
+    let cardSeleccionadaContenido = cardSeleccionada.childNodes
+    let contenedorLista = document.createElement("div");
+    let cadena = "";
+    empresaRelacionada.productos.forEach((producto) => {
+        cadena += `<li>${producto}</li>`;
+    })
+    contenedorLista.innerHTML = ` 
+    <ul>
+        ${cadena}
+    </ul>
+    `
+    cardSeleccionadaContenido[1].appendChild(contenedorLista); 
+
+}
+ */
+
+ //___________
+ //console.log(validar)
+                    //losNumStandPorBorrarDelValidador = validar.indexOf((x) =>{ x == empresa.numStand})
+                    if( 0 < (validar.indexOf((x) =>{ x == empresa.numStand}))){
+                        console.log(empresa.numStand)
+                        validar.shift(empresa.numStand)
+                    }
+                    //validar.shift(losNumStandPorBorrarDelValidador)

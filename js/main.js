@@ -1,41 +1,31 @@
-/* function removerCards(conEstaCategoria) {
-    let contenedorCards = document.getElementById("contenedorCards");
-    let cards = contenedorCards.childNodes;
-    console.log(card)    
-} */
+function removerCards(conEstaCategoria) {
+    let comidasBotonQuitar = document.getElementById("quitarComidas");
+    comidasBotonQuitar.onclick = () => {
+        let empresasPorRemover = localStorage.getItem(`empresasMostradas`)
+        let empresasPorQuitar = JSON.parse(empresasPorRemover)
+        empresasPorQuitar.forEach((empresa) => {
+            if(empresa.categoria.find(x => x == conEstaCategoria)){
+                let cards = contenedorCards.childNodes;
+                for (let card of cards) {
+                    card.remove()
+                }
+            }
+        })
+    };
 
-//console.log("")
+
+    
+} 
 
 
-
-/* function verProductos(deEstaEmpresa ) {
-    let empresaRelacionada = empresas.find((empresa) => empresa.numStand === deEstaEmpresa)
-    let contenedorCards = document.getElementById("contenedorCards");
-    let cards= contenedorCards.childNodes;
-    console.log(cards)
-    let cardSeleccionada = cards[deEstaEmpresa];
-    let cardSeleccionadaContenido = cardSeleccionada.childNodes
-    let contenedorLista = document.createElement("div");
-    let cadena = "";
-    empresaRelacionada.productos.forEach((producto) => {
-        cadena += `<li>${producto}</li>`;
-    })
-    contenedorLista.innerHTML = ` 
-    <ul>
-        ${cadena}
-    </ul>
-    `
-    cardSeleccionadaContenido[1].appendChild(contenedorLista); 
-
-}
- */
-
+//________________________________
+let numEmpresasMostradas = [];
 let empresasMostradas = [];
+
+let validar = [];
 function mostrarEmpresasEncontradas(empresasEncontradas) {
-    let validar = [];
     empresasEncontradas.forEach((empresa) => {validar.push(empresa.numStand)})
-    console.log(validar)
-    if (empresasMostradas.includes(validar[1])){
+    if (numEmpresasMostradas.includes(validar[1])){
         alert("ya esta esta categoria")
     } else{
         empresasEncontradas.forEach((empresa) =>{
@@ -56,7 +46,10 @@ function mostrarEmpresasEncontradas(empresasEncontradas) {
         </div>
         `;
         contenedorCards.appendChild(card);
-        empresasMostradas.push(empresa.numStand);
+        numEmpresasMostradas.push(empresa.numStand);
+        empresasMostradas.push(empresa)
+        let empresasMostradasJSON = JSON.stringify(empresasMostradas)
+        localStorage.setItem(`empresasMostradas`, empresasMostradasJSON)
         })
     }
 }
@@ -73,6 +66,8 @@ function agregarBotonQuitar(enLaCategoria) {
                 validarBoton1 = true;
                 let botonQuitar1 = document.createElement("button");
                 botonQuitar1.classList.add("quitarComidas")
+                botonQuitar1.setAttribute("id", "quitarComidas")
+
                 botonQuitar1.innerHTML=`
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -80,8 +75,7 @@ function agregarBotonQuitar(enLaCategoria) {
                 </svg>
                 `
                 boton1.appendChild(botonQuitar1);
-                let comidasBotonQuitar = document.getElementById("quitarComidas");
-                //comidasBotonQuitar.onclick = () => {removerCards("comidas")};
+                removerCards("comidas")
             }
             break;
         case "bebidas":
