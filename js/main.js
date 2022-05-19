@@ -1,20 +1,47 @@
 function removerCards(conEstaCategoria) {
     let comidasBotonQuitar = document.getElementById("quitarComidas");
-    comidasBotonQuitar.onclick = () => {
-        let empresasPorRemover = localStorage.getItem(`empresasMostradas`)
-        let empresasPorQuitar = JSON.parse(empresasPorRemover)
-        empresasPorQuitar.forEach((empresa) => {
-            if(empresa.categoria.find(x => x == conEstaCategoria)){
-                let cards = contenedorCards.childNodes;
-                for (let card of cards) {
-                    card.remove()
+    let bebidasBotonQuitar = document.getElementById("quitarBebidas");
+    let regalosBotonQuitar = document.getElementById("quitarRegalos");
+    if(conEstaCategoria == "comidas"){
+        comidasBotonQuitar.onclick = () => {
+            let empresasPorRemover = localStorage.getItem(`empresasMostradas`)
+            let empresasPorQuitar = JSON.parse(empresasPorRemover)
+            empresasPorQuitar.forEach((empresa) => {
+                if(empresa.categoria.find(x => x == conEstaCategoria)){
+                    let cards = contenedorCards.childNodes;
+                    for (let card of cards) {
+                        card.remove()
+                    }
                 }
-            }
-        })
-    };
-
-
-    
+            })
+        };
+    } else if(conEstaCategoria == "bebidas") {
+        bebidasBotonQuitar.onclick = () => {
+            let empresasPorRemover = localStorage.getItem(`empresasMostradas`)
+            let empresasPorQuitar = JSON.parse(empresasPorRemover)
+            empresasPorQuitar.forEach((empresa) => {
+                if(empresa.categoria.find(x => x == conEstaCategoria)){
+                    let cards = contenedorCards.childNodes;
+                    for (let card of cards) {
+                        card.remove()
+                    }
+                }
+            })
+        };
+    } else if(conEstaCategoria == "regalos"){
+        regalosBotonQuitar.onclick = () => {
+            let empresasPorRemover = localStorage.getItem(`empresasMostradas`)
+            let empresasPorQuitar = JSON.parse(empresasPorRemover)
+            empresasPorQuitar.forEach((empresa) => {
+                if(empresa.categoria.find(x => x == conEstaCategoria)){
+                    let cards = contenedorCards.childNodes;
+                    for (let card of cards) {
+                        card.remove()
+                    }
+                }
+            })
+        };
+    }
 } 
 
 
@@ -22,36 +49,31 @@ function removerCards(conEstaCategoria) {
 let numEmpresasMostradas = [];
 let empresasMostradas = [];
 
-let validar = [];
-function mostrarEmpresasEncontradas(empresasEncontradas) {
-    empresasEncontradas.forEach((empresa) => {validar.push(empresa.numStand)})
-    if (numEmpresasMostradas.includes(validar[1])){
-        alert("ya esta esta categoria")
-    } else{
-        empresasEncontradas.forEach((empresa) =>{
-        let contenedorCards = document.getElementById("contenedorCards");
-        let card = document.createElement("article");
-        card.classList.add("col-10", "card", "m-1", `${empresa.categoria}`);
-        card.innerHTML= `
-        <div class="d-flex align-items-center">
-            <div class="w-25">
-                <img class="w-100" src="../images/logo-ispe.png" alt="logo">
-            </div>
-            <div class="card-body">
-                <h5>${empresa.nombreEmpresa}</h5>
-                <p>Categoría: <b>${empresa.categoria}</b></p>
-                <p>Stand: ${empresa.numStand}</p>
-                <button class="btn btn-primary" onclick= "verProductos(${empresa.numStand})">Ver productos</button>
-            </div>
+function mostrarEmpresasEncontradas(empresasEncontradas) {    
+    empresasEncontradas.forEach((empresa) =>{
+    let contenedorCards = document.getElementById("contenedorCards");
+    let card = document.createElement("article");
+    card.classList.add("col-10", "card", "m-1", `${empresa.categoria}`);
+    card.innerHTML= `
+    <div class="d-flex align-items-center">
+        <div class="w-25">
+            <img class="w-100" src="../images/logo-ispe.png" alt="logo">
         </div>
-        `;
-        contenedorCards.appendChild(card);
-        numEmpresasMostradas.push(empresa.numStand);
-        empresasMostradas.push(empresa)
-        let empresasMostradasJSON = JSON.stringify(empresasMostradas)
-        localStorage.setItem(`empresasMostradas`, empresasMostradasJSON)
-        })
-    }
+        <div class="card-body">
+            <h5>${empresa.nombreEmpresa}</h5>
+            <p>Categoría: <b>${empresa.categoria}</b></p>
+            <p>Stand: ${empresa.numStand}</p>
+            <p>Productos: ${empresa.productos}</p>
+        </div>
+    </div>
+    `;
+    contenedorCards.appendChild(card);
+    numEmpresasMostradas.push(empresa.numStand);
+    empresasMostradas.push(empresa)
+    let empresasMostradasJSON = JSON.stringify(empresasMostradas)
+    localStorage.setItem(`empresasMostradas`, empresasMostradasJSON)
+    })
+    
 }
 
 let validarBoton1 = false;
@@ -67,7 +89,6 @@ function agregarBotonQuitar(enLaCategoria) {
                 let botonQuitar1 = document.createElement("button");
                 botonQuitar1.classList.add("quitarComidas")
                 botonQuitar1.setAttribute("id", "quitarComidas")
-
                 botonQuitar1.innerHTML=`
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -85,6 +106,7 @@ function agregarBotonQuitar(enLaCategoria) {
                 validarBoton2 = true;
                 let botonQuitar2 = document.createElement("button");
                 botonQuitar2.classList.add("quitarBebidas")
+                botonQuitar2.setAttribute("id", "quitarBebidas")
                 botonQuitar2.innerHTML=`
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -92,8 +114,7 @@ function agregarBotonQuitar(enLaCategoria) {
                 </svg>
                 `
                 boton2.appendChild(botonQuitar2);
-                let bebidasBotonQuitar = document.getElementById("quitarBebidas");
-                //bebidasBotonQuitar.onclick = () => {removerCards("bebidas")};
+                removerCards("bebidas")
             }
             break;
         case "regalos":
@@ -103,6 +124,7 @@ function agregarBotonQuitar(enLaCategoria) {
                 let boton3 = document.getElementById("boton-3")
                 let botonQuitar3 = document.createElement("button");
                 botonQuitar3.classList.add("quitarRegalos")
+                botonQuitar3.setAttribute("id", "quitarRegalos")
                 botonQuitar3.innerHTML=`
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -110,8 +132,7 @@ function agregarBotonQuitar(enLaCategoria) {
                 </svg>
                 `
                 boton3.appendChild(botonQuitar3);
-                let regalosBotonQuitar = document.getElementById("quitarRegalos");
-               // regalosBotonQuitar.onclick = () => {removerCards("regalos")};
+                removerCards("regalos")
             }
             break;
         default:
