@@ -14,6 +14,9 @@ function removerCards(conEstaCategoria) {
                     }
                 }
             })
+            let botonQuitar = document.getElementById("quitarComidas")
+            botonQuitar.remove()
+            validarBoton1 = false;
         };
     } else if(conEstaCategoria == "bebidas") {
         bebidasBotonQuitar.onclick = () => {
@@ -27,6 +30,9 @@ function removerCards(conEstaCategoria) {
                     }
                 }
             })
+            let botonQuitar = document.getElementById("quitarBebidas")
+            botonQuitar.remove()
+            validarBoton2 = false;
         };
     } else if(conEstaCategoria == "regalos"){
         regalosBotonQuitar.onclick = () => {
@@ -40,6 +46,9 @@ function removerCards(conEstaCategoria) {
                     }
                 }
             })
+            let botonQuitar = document.getElementById("quitarRegalos")
+            botonQuitar.remove()
+            validarBoton3 = false;
         };
     }
 } 
