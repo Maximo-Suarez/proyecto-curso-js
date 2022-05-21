@@ -4,54 +4,81 @@ function removerCards(conEstaCategoria) {
     let regalosBotonQuitar = document.getElementById("quitarRegalos");
     if(conEstaCategoria == "comidas"){
         comidasBotonQuitar.onclick = () => {
-            let empresasPorRemover = localStorage.getItem(`empresasMostradas`)
-            let empresasPorQuitar = JSON.parse(empresasPorRemover)
+            let empresasMostradas = localStorage.getItem(`empresasMostradas`)
+            let empresasPorQuitar = JSON.parse(empresasMostradas)
             empresasPorQuitar.forEach((empresa) => {
                 if(empresa.categoria.find(x => x == conEstaCategoria)){
-                    let cards = contenedorCards.childNodes;
+                    let cards = document.getElementsByClassName(conEstaCategoria) ;
                     for (let card of cards) {
-                        card.remove()
+                        let clases = card.classList;
+                        let item = clases.item(clases.length-1)
+                        card.textContent = item;
+                        if(item == "comidas"){
+                            card.remove()
+                        }
+                        
                     }
                 }
             })
+            let botonQuitar = document.getElementById("quitarComidas")
+            botonQuitar.remove()
+            validarBoton1 = false;
         };
     } else if(conEstaCategoria == "bebidas") {
         bebidasBotonQuitar.onclick = () => {
-            let empresasPorRemover = localStorage.getItem(`empresasMostradas`)
-            let empresasPorQuitar = JSON.parse(empresasPorRemover)
+            let empresasMostradas = localStorage.getItem(`empresasMostradas`)
+            let empresasPorQuitar = JSON.parse(empresasMostradas)
             empresasPorQuitar.forEach((empresa) => {
                 if(empresa.categoria.find(x => x == conEstaCategoria)){
-                    let cards = contenedorCards.childNodes;
+                    let cards = document.getElementsByClassName(conEstaCategoria) ;
                     for (let card of cards) {
-                        card.remove()
+                        let clases = card.classList;
+                        let item = clases.item(clases.length-1)
+                        card.textContent = item;
+                        if(item == "bebidas"){
+                            card.remove()
+                        }
+                        
                     }
                 }
             })
+            let botonQuitar = document.getElementById("quitarBebidas")
+            botonQuitar.remove()
+            validarBoton2 = false;
         };
     } else if(conEstaCategoria == "regalos"){
         regalosBotonQuitar.onclick = () => {
-            let empresasPorRemover = localStorage.getItem(`empresasMostradas`)
-            let empresasPorQuitar = JSON.parse(empresasPorRemover)
+            let empresasMostradas = localStorage.getItem(`empresasMostradas`)
+            let empresasPorQuitar = JSON.parse(empresasMostradas)
             empresasPorQuitar.forEach((empresa) => {
                 if(empresa.categoria.find(x => x == conEstaCategoria)){
-                    let cards = contenedorCards.childNodes;
+                    let cards = document.getElementsByClassName(conEstaCategoria) ;
                     for (let card of cards) {
-                        card.remove()
+                        let clases = card.classList;
+                        let item = clases.item(clases.length-1)
+                        card.textContent = item;
+                        if(item == "regalos"){
+                            card.remove()
+                        }
+                        
                     }
                 }
             })
+            let botonQuitar = document.getElementById("quitarRegalos")
+            botonQuitar.remove()
+            validarBoton3 = false;
         };
     }
 } 
 
 
 //________________________________
-let numEmpresasMostradas = [];
+let idEmpresasMostradas = [];
 let empresasMostradas = [];
 
 function mostrarEmpresasEncontradas(empresasEncontradas) {    
-    empresasEncontradas.forEach((empresa) =>{
     let contenedorCards = document.getElementById("contenedorCards");
+    empresasEncontradas.forEach((empresa) =>{
     let card = document.createElement("article");
     card.classList.add("col-10", "card", "m-1", `${empresa.categoria}`);
     card.innerHTML= `
@@ -68,13 +95,14 @@ function mostrarEmpresasEncontradas(empresasEncontradas) {
     </div>
     `;
     contenedorCards.appendChild(card);
-    numEmpresasMostradas.push(empresa.numStand);
+    idEmpresasMostradas.push(empresa.numStand);
     empresasMostradas.push(empresa)
     let empresasMostradasJSON = JSON.stringify(empresasMostradas)
     localStorage.setItem(`empresasMostradas`, empresasMostradasJSON)
     })
     
 }
+//________________________________
 
 let validarBoton1 = false;
 let validarBoton2 = false;
