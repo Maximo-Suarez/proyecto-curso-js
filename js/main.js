@@ -1,15 +1,27 @@
+/* let array1 = ["manzana", "pera", "banana"]
+//let array2 = array1.slice(1, 2)
+//console.log(array2)
+let i = array1.indexOf("manzana")
+console.log(array1)
+console.log(i)
+array1.splice(i, 1)
+console.log(array1) */
+
+
+
 function removerCards(conEstaCategoria) {
     let comidasBotonQuitar = document.getElementById("quitarComidas");
     let bebidasBotonQuitar = document.getElementById("quitarBebidas");
     let regalosBotonQuitar = document.getElementById("quitarRegalos");
     if(conEstaCategoria == "comidas"){
         comidasBotonQuitar.onclick = () => {
-            let empresasMostradas = localStorage.getItem(`empresasMostradas`)
-            let empresasPorQuitar = JSON.parse(empresasMostradas)
-            //idEmpresasMostradas.splice(0, empresasPorQuitar.length())
+            let empresasMostradasLS = localStorage.getItem(`empresasMostradas`)
+            let empresasPorQuitar = JSON.parse(empresasMostradasLS)
             empresasPorQuitar.forEach((empresa) => {
                 if(empresa.categoria.find(x => x == conEstaCategoria)){
-                    //idEmpresasMostradas.delete(empresa.numStand)
+                    let i = idEmpresasMostradas.indexOf(empresa.numStand);
+                    idEmpresasMostradas.splice(i, 1);    
+                    console.log(idEmpresasMostradas)
                     let cards = document.getElementsByClassName(conEstaCategoria) ;
                     for (let card of cards) {
                         let clases = card.classList;
@@ -75,8 +87,6 @@ function removerCards(conEstaCategoria) {
 
 
 //________________________________
-let idEmpresasMostradas = [];
-let empresasMostradas = [];
 
 function mostrarEmpresasEncontradas(empresasEncontradas) {   
     empresasEncontradas.forEach((x) => {

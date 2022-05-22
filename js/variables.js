@@ -78,5 +78,7 @@ let empresas = [
     empresa11,
     empresa12,
 ]
+let idEmpresasMostradas = [];
+let empresasMostradas = [];
 
 const carrito = [];
