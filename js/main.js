@@ -16,7 +16,8 @@ function removerCards(conEstaCategoria) {
     if(conEstaCategoria == "comidas"){
         comidasBotonQuitar.onclick = () => {
             let empresasMostradasLS = localStorage.getItem(`empresasMostradas`)
-            let empresasPorQuitar = JSON.parse(empresasMostradasLS)
+            let empresasMostradasJSON = JSON.parse(empresasMostradasLS)
+            let empresasPorQuitar = empresasMostradasJSON.filter((x) =>{ return x.categoria == conEstaCategoria})
             empresasPorQuitar.forEach((empresa) => {
                 if(empresa.categoria.find(x => x == conEstaCategoria)){
                     let i = idEmpresasMostradas.indexOf(empresa.numStand);
@@ -40,10 +41,15 @@ function removerCards(conEstaCategoria) {
         };
     } else if(conEstaCategoria == "bebidas") {
         bebidasBotonQuitar.onclick = () => {
-            let empresasMostradas = localStorage.getItem(`empresasMostradas`)
-            let empresasPorQuitar = JSON.parse(empresasMostradas)
+            let empresasMostradasLS = localStorage.getItem(`empresasMostradas`)
+            let empresasMostradasJSON = JSON.parse(empresasMostradasLS)
+            let empresasPorQuitar = empresasMostradasJSON.filter((x) =>{ return x.categoria == conEstaCategoria})
             empresasPorQuitar.forEach((empresa) => {
                 if(empresa.categoria.find(x => x == conEstaCategoria)){
+                    let i = idEmpresasMostradas.indexOf(empresa.numStand);
+                    idEmpresasMostradas.splice(i, 1);    
+                    console.log(idEmpresasMostradas)
+
                     let cards = document.getElementsByClassName(conEstaCategoria) ;
                     for (let card of cards) {
                         let clases = card.classList;
@@ -62,10 +68,15 @@ function removerCards(conEstaCategoria) {
         };
     } else if(conEstaCategoria == "regalos"){
         regalosBotonQuitar.onclick = () => {
-            let empresasMostradas = localStorage.getItem(`empresasMostradas`)
-            let empresasPorQuitar = JSON.parse(empresasMostradas)
+            let empresasMostradasLS = localStorage.getItem(`empresasMostradas`)
+            let empresasMostradasJSON = JSON.parse(empresasMostradasLS)
+            let empresasPorQuitar = empresasMostradasJSON.filter((x) =>{ return x.categoria == conEstaCategoria})
             empresasPorQuitar.forEach((empresa) => {
                 if(empresa.categoria.find(x => x == conEstaCategoria)){
+                    let i = idEmpresasMostradas.indexOf(empresa.numStand);
+                    idEmpresasMostradas.splice(i, 1);    
+                    console.log(idEmpresasMostradas)
+
                     let cards = document.getElementsByClassName(conEstaCategoria) ;
                     for (let card of cards) {
                         let clases = card.classList;

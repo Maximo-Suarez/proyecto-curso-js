@@ -24,7 +24,7 @@ const empresa2 = new Empresas("Pop's",
 ["Coca-cola", "Agua mineral", "Jugo de naraja",]);
 const empresa3 = new Empresas("Batut's", 
 3, 
-["bebidas", "comidas"], 
+["comidas"], 
 ["Batido helado", "Helado"]);
 const empresa4 = new Empresas("Al horno", 
 4, 
@@ -40,7 +40,7 @@ const empresa6 = new Empresas("Lluvia de sandwiches",
 ["tortuguita", "sandwich de miga", "pebetes"]);
 const empresa7 = new Empresas("Hakuna Matata", 
 7, 
-["bebidas", "comidas"], 
+["bebidas"], 
 ["licuados", "ensalada de frutas"]);
 const empresa8 = new Empresas("Dulce paladar", 
 8, 
