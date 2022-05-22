@@ -6,8 +6,10 @@ function removerCards(conEstaCategoria) {
         comidasBotonQuitar.onclick = () => {
             let empresasMostradas = localStorage.getItem(`empresasMostradas`)
             let empresasPorQuitar = JSON.parse(empresasMostradas)
+            //idEmpresasMostradas.splice(0, empresasPorQuitar.length())
             empresasPorQuitar.forEach((empresa) => {
                 if(empresa.categoria.find(x => x == conEstaCategoria)){
+                    //idEmpresasMostradas.delete(empresa.numStand)
                     let cards = document.getElementsByClassName(conEstaCategoria) ;
                     for (let card of cards) {
                         let clases = card.classList;
@@ -76,31 +78,38 @@ function removerCards(conEstaCategoria) {
 let idEmpresasMostradas = [];
 let empresasMostradas = [];
 
-function mostrarEmpresasEncontradas(empresasEncontradas) {    
-    let contenedorCards = document.getElementById("contenedorCards");
-    empresasEncontradas.forEach((empresa) =>{
-    let card = document.createElement("article");
-    card.classList.add("col-10", "card", "m-1", `${empresa.categoria}`);
-    card.innerHTML= `
-    <div class="d-flex align-items-center">
-        <div class="w-25">
-            <img class="w-100" src="../images/logo-ispe.png" alt="logo">
-        </div>
-        <div class="card-body">
-            <h5>${empresa.nombreEmpresa}</h5>
-            <p>Categoría: <b>${empresa.categoria}</b></p>
-            <p>Stand: ${empresa.numStand}</p>
-            <p>Productos: ${empresa.productos}</p>
-        </div>
-    </div>
-    `;
-    contenedorCards.appendChild(card);
-    idEmpresasMostradas.push(empresa.numStand);
-    empresasMostradas.push(empresa)
-    let empresasMostradasJSON = JSON.stringify(empresasMostradas)
-    localStorage.setItem(`empresasMostradas`, empresasMostradasJSON)
+function mostrarEmpresasEncontradas(empresasEncontradas) {   
+    empresasEncontradas.forEach((x) => {
+        if (idEmpresasMostradas.includes(x.numStand)) {
+            return false
+        } else {
+            let contenedorCards = document.getElementById("contenedorCards");
+            empresasEncontradas.forEach((empresa) =>{
+                let card = document.createElement("article");
+                card.classList.add("col-10", "card", "m-1", `${empresa.categoria}`);
+                card.innerHTML= `
+                <div class="d-flex align-items-center">
+                    <div class="w-25">
+                        <img class="w-100" src="../images/logo-ispe.png" alt="logo">
+                    </div>
+                    <div class="card-body">
+                        <h5>${empresa.nombreEmpresa}</h5>
+                        <p>Categoría: <b>${empresa.categoria}</b></p>
+                        <p>Stand: ${empresa.numStand}</p>
+                        <p>Productos: ${empresa.productos}</p>
+                    </div>
+                </div>
+                `;
+                contenedorCards.prepend(card);
+                idEmpresasMostradas.push(empresa.numStand);
+                empresasMostradas.push(empresa)
+                let empresasMostradasJSON = JSON.stringify(empresasMostradas)
+                localStorage.setItem(`empresasMostradas`, empresasMostradasJSON)
+            })
+        }
     })
-    
+    console.log(idEmpresasMostradas)
+
 }
 //________________________________
 
