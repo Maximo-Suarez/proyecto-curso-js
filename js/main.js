@@ -1,14 +1,3 @@
-/* let array1 = ["manzana", "pera", "banana"]
-//let array2 = array1.slice(1, 2)
-//console.log(array2)
-let i = array1.indexOf("manzana")
-console.log(array1)
-console.log(i)
-array1.splice(i, 1)
-console.log(array1) */
-
-
-
 function removerCards(conEstaCategoria) {
     let comidasBotonQuitar = document.getElementById("quitarComidas");
     let bebidasBotonQuitar = document.getElementById("quitarBebidas");
@@ -107,9 +96,9 @@ function mostrarEmpresasEncontradas(empresasEncontradas) {
             let contenedorCards = document.getElementById("contenedorCards");
             empresasEncontradas.forEach((empresa) =>{
                 let card = document.createElement("article");
-                card.classList.add("col-10", "card", "m-1", `${empresa.categoria}`);
+                card.classList.add("col-sm-10","col-lg-12", "card","shadow-sm", "m-1", `${empresa.categoria}`);
                 card.innerHTML= `
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center flex-sm-column flex-lg-row">
                     <div class="w-25">
                         <img class="w-100" src="../images/logo-ispe.png" alt="logo">
                     </div>
@@ -119,6 +108,10 @@ function mostrarEmpresasEncontradas(empresasEncontradas) {
                         <p>Stand: ${empresa.numStand}</p>
                         <p>Productos: ${empresa.productos}</p>
                     </div>
+                    <div class="card-body">
+                        <button class="btn btn-primary">Ver productos</button>
+                    </div>
+
                 </div>
                 `;
                 contenedorCards.prepend(card);
