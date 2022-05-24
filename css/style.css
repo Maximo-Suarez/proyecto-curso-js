@@ -31,3 +31,12 @@
 
 }
 
+.contenedorProductos{
+    height: 100%;
+/*     background-color: rgba(253, 149, 29, 0.8);
+ */    
+    background: rgb(253,198,29);
+    background: linear-gradient(270deg, rgba(253,198,29,1) 0%, rgba(252,176,69,1) 25%, rgba(253,29,29,1) 100%);
+
+    box-shadow: -20px 0px 20px #00000014;
+}

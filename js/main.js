@@ -1,3 +1,71 @@
+function mostrarProductosDe(idDeEstaEmpresa) {
+    let emp = [...empresas]
+    let empresa =emp[idDeEstaEmpresa-1]
+    console.log(empresa)
+    let [a,b,c,d] = empresa.productos
+    empresa.boton? empresa.boton = false : empresa.boton = true;
+    if(empresa.boton){
+        //boton X
+        let botonX = document.getElementById(`VerProductDeEmpNum${idDeEstaEmpresa}`)
+        botonX.innerText = "X";
+        //2do div
+        let elemento2 = document.getElementById(`infoDeEmp${idDeEstaEmpresa}`)
+        elemento2.classList.add("col-3")
+        let clasesDeElemento2 = elemento2.classList
+        elemento2.classList.remove(clasesDeElemento2[1]) 
+        //3er div
+        let elemento3 = document.getElementById(`productDeLaEmpNum${idDeEstaEmpresa}`)
+        elemento3.classList.add("col-4", "contenedorProductos")
+        let clasesDeElemento3 = elemento3.classList
+        elemento3.classList.remove(clasesDeElemento3[2]) 
+        let catalogo = document.createElement("div")
+        catalogo.setAttribute("id", `catalogoEmp${idDeEstaEmpresa}`)
+        //let cantDeCeldas = (empresa.productos).length
+        catalogo.innerHTML = `
+        <table>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+            </tr>
+            <tr>
+                <td>${a.p}</td>
+                <td>${a.precio}</td>
+            </tr>
+            <tr>
+                <td>${b.p}</td>
+                <td>${b.precio}</td>
+            </tr>
+            <tr>
+                <td>${c.p}</td>
+                <td>${c.precio}</td>
+            </tr>
+        </table>
+        `
+        elemento3.appendChild(catalogo)
+    }  else{
+        //2do div        
+        let elemento2 = document.getElementById(`infoDeEmp${idDeEstaEmpresa}`)
+        elemento2.classList.add("col-3")
+        let clasesDeElemento2 = elemento2.classList
+        elemento2.classList.remove(clasesDeElemento2[1]) 
+        elemento2.classList.add("col-6")
+        //3er div
+        let elemento3 = document.getElementById(`productDeLaEmpNum${idDeEstaEmpresa}`)
+        elemento3.classList.add("contenedorProductos", "col-4")
+        let clasesDeElemento3 = elemento3.classList
+        elemento3.classList.remove(clasesDeElemento3[3]) 
+        elemento3.classList.remove(clasesDeElemento3[2]) 
+        elemento3.classList.add("col-2")
+        let catalogo = document.getElementById(`catalogoEmp${idDeEstaEmpresa}`)
+        catalogo.innerHTML= ""
+        //boton X
+        let botonX = document.getElementById(`VerProductDeEmpNum${idDeEstaEmpresa}`)
+        botonX.innerText = "Ver Productos";
+
+    }
+}
+
+
 function removerCards(conEstaCategoria) {
     let comidasBotonQuitar = document.getElementById("quitarComidas");
     let bebidasBotonQuitar = document.getElementById("quitarBebidas");
@@ -85,7 +153,6 @@ function removerCards(conEstaCategoria) {
     }
 } 
 
-
 //________________________________
 
 function mostrarEmpresasEncontradas(empresasEncontradas) {   
@@ -97,19 +164,20 @@ function mostrarEmpresasEncontradas(empresasEncontradas) {
             empresasEncontradas.forEach((empresa) =>{
                 let card = document.createElement("article");
                 card.classList.add("col-sm-10","col-lg-12", "card","shadow-sm", "m-1", `${empresa.categoria}`);
+                //<div class="d-flex align-items-center flex-sm-column flex-lg-row">
                 card.innerHTML= `
-                <div class="d-flex align-items-center flex-sm-column flex-lg-row">
-                    <div class="w-25">
+                <div class="row align-items-center" id="contElementEmpresa${empresa.numStand}">
+                    <div class="w-25 col-4">
                         <img class="w-100" src="../images/logo-ispe.png" alt="logo">
                     </div>
-                    <div class="card-body">
+                    <div id="infoDeEmp${empresa.numStand}" class="card-body col-6">
                         <h5>${empresa.nombreEmpresa}</h5>
                         <p>Categoría: <b>${empresa.categoria}</b></p>
                         <p>Stand: ${empresa.numStand}</p>
-                        <p>Productos: ${empresa.productos}</p>
+                        <p>Aca iría una breve descripcion</p>
                     </div>
-                    <div class="card-body">
-                        <button class="btn btn-primary">Ver productos</button>
+                    <div class="verProductDeEmp${empresa.numStand} card-body col-2" id="productDeLaEmpNum${empresa.numStand}" >
+                        <button class="btn btn-primary" id="VerProductDeEmpNum${empresa.numStand}" onclick="mostrarProductosDe(${empresa.numStand})">Ver productos</button>
                     </div>
 
                 </div>
