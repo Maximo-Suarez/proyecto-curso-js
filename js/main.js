@@ -7,7 +7,7 @@ function mostrarProductosDe(idDeEstaEmpresa) {
     if(empresa.boton){
         //boton X
         let botonX = document.getElementById(`VerProductDeEmpNum${idDeEstaEmpresa}`)
-        botonX.innerText = "X";
+        botonX.innerHTML= `<b>X</b>`
         //2do div
         let elemento2 = document.getElementById(`infoDeEmp${idDeEstaEmpresa}`)
         elemento2.classList.add("col-3")
@@ -56,12 +56,7 @@ function mostrarProductosDe(idDeEstaEmpresa) {
         elemento3.classList.remove(clasesDeElemento3[3]) 
         elemento3.classList.remove(clasesDeElemento3[2]) 
         elemento3.classList.add("col-2")
-        let catalogo = document.getElementById(`catalogoEmp${idDeEstaEmpresa}`)
-        catalogo.innerHTML= ""
-        //boton X
-        let botonX = document.getElementById(`VerProductDeEmpNum${idDeEstaEmpresa}`)
-        botonX.innerText = "Ver Productos";
-
+        elemento3.innerHTML=`<button class="btn btn-warning" id="VerProductDeEmpNum${idDeEstaEmpresa}" onclick="mostrarProductosDe(${idDeEstaEmpresa})">Ver productos</button>`
     }
 }
 
@@ -163,7 +158,7 @@ function mostrarEmpresasEncontradas(empresasEncontradas) {
             let contenedorCards = document.getElementById("contenedorCards");
             empresasEncontradas.forEach((empresa) =>{
                 let card = document.createElement("article");
-                card.classList.add("col-sm-10","col-lg-12", "card","shadow-sm", "m-1", `${empresa.categoria}`);
+                card.classList.add("col-sm-10","col-lg-12", "card","shadow-sm", `${empresa.categoria}`);
                 //<div class="d-flex align-items-center flex-sm-column flex-lg-row">
                 card.innerHTML= `
                 <div class="row align-items-center" id="contElementEmpresa${empresa.numStand}">
@@ -177,7 +172,7 @@ function mostrarEmpresasEncontradas(empresasEncontradas) {
                         <p>Aca iría una breve descripcion</p>
                     </div>
                     <div class="verProductDeEmp${empresa.numStand} card-body col-2" id="productDeLaEmpNum${empresa.numStand}" >
-                        <button class="btn btn-primary" id="VerProductDeEmpNum${empresa.numStand}" onclick="mostrarProductosDe(${empresa.numStand})">Ver productos</button>
+                        <button class="btn btn-warning" id="VerProductDeEmpNum${empresa.numStand}" onclick="mostrarProductosDe(${empresa.numStand})">Ver productos</button>
                     </div>
 
                 </div>

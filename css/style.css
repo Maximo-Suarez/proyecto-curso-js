@@ -4,12 +4,15 @@
     height: 500px;
 }
 
+body{
+    overflow-x: hidden;
+}
 .buscador__empresas{
     padding: 3rem 0;
     display: flex;
     height: 500px;
-
     overflow: scroll;
+    overflow-x: hidden;
 }
 @media only screen and (max-width: 450px){
     .buscador__filtrador{
@@ -36,7 +39,15 @@
 /*     background-color: rgba(253, 149, 29, 0.8);
  */    
     background: rgb(253,198,29);
-    background: linear-gradient(270deg, rgba(253,198,29,1) 0%, rgba(252,176,69,1) 25%, rgba(253,29,29,1) 100%);
+    background: linear-gradient(90deg, rgba(253,198,29,1) 0%, rgba(252,176,69,1) 25%, rgba(253,29,29,1) 100%);
 
-    box-shadow: -20px 0px 20px #00000014;
+    box-shadow: -30px 0px 40px #00000014;
+}
+
+.tabla__productos{
+    overflow-x: auto;
+}
+
+.card{
+    margin: .25rem 0;
 }
