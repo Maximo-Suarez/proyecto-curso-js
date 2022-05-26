@@ -7,9 +7,8 @@ console.log(productosAgregadosLS)
 productosAgregadosLS != null? mostrarCarrito(productosAgregadosLS) : aviso()
 
 function aviso() {
-    alert("hola")
     Swal.fire({
-        icon: 'question',
+        icon: 'warning',
         title: 'No hay nada en tu carrito!',
         text: 'Ve a la tienda y agrega productos a tu carrito de compras',
         confirmButtonText: `OK!`
