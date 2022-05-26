@@ -1,8 +1,30 @@
+
+function guardarProductEnCartYLS(producto){
+    carrito.push(producto)
+    let carritoJSON = JSON.stringify(carrito)
+    localStorage.setItem(`productosSeleccionados`, carritoJSON)
+    Toastify({
+        text: `"${producto[0]}" agregado al carrito`,
+        duration: 2000,
+        gravity: `bottom`,
+        position: `right`,
+        style:{
+            background: "rgba(253,29,29,1)", 
+        }
+
+    }).showToast();
+}
+
 function mostrarProductosDe(idDeEstaEmpresa) {
     let emp = [...empresas]
     let empresa =emp[idDeEstaEmpresa-1]
     console.log(empresa)
     let [a,b,c,d] = empresa.productos
+    p1 = [a.p, a.precio, idDeEstaEmpresa]
+    console.log(p1)
+    p2 = [b.p, b.precio, idDeEstaEmpresa]
+    p3 = [c.p, c.precio, idDeEstaEmpresa]
+
     empresa.boton? empresa.boton = false : empresa.boton = true;
     if(empresa.boton){
         //boton X
@@ -30,14 +52,23 @@ function mostrarProductosDe(idDeEstaEmpresa) {
             <tr>
                 <td>${a.p}</td>
                 <td>${a.precio}</td>
+                <td><button id="emp${idDeEstaEmpresa}pA" onclick="guardarProductEnCartYLS(p1)" class="probando"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg></button>
+                </td>
             </tr>
             <tr>
                 <td>${b.p}</td>
                 <td>${b.precio}</td>
+                <td><button id="emp${idDeEstaEmpresa}pB" onclick="guardarProductEnCartYLS(p2)" class="probando"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg></button>
+                </td>
             </tr>
             <tr>
                 <td>${c.p}</td>
                 <td>${c.precio}</td>
+                <td><button id="emp${idDeEstaEmpresa}pC" onclick="guardarProductEnCartYLS(p3)" class="probando"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg></button>
+                </td>
             </tr>
         </table>
         `
