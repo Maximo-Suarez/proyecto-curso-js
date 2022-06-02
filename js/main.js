@@ -1,13 +1,11 @@
 
 const pedirData = async () => {
     const respuesta = await
-    fetch(`../data.json`)
+    fetch(`https://raw.githubusercontent.com/Maximo-Suarez/proyecto-curso-js/master/data.json`)
     empresas = await respuesta.json()
     console.log(empresas)
 } 
 pedirData() 
-
-
 
 function guardarProductEnCartYLS(producto){
     carrito.push(producto)
