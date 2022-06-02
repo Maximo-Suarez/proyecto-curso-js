@@ -1,4 +1,14 @@
 
+const pedirData = async () => {
+    const respuesta = await
+    fetch(`../data.json`)
+    empresas = await respuesta.json()
+    console.log(empresas)
+} 
+pedirData() 
+
+
+
 function guardarProductEnCartYLS(producto){
     carrito.push(producto)
     let carritoJSON = JSON.stringify(carrito)
@@ -102,7 +112,7 @@ function removerCards(conEstaCategoria) {
             let empresasMostradasJSON = JSON.parse(empresasMostradasLS)
             let empresasPorQuitar = empresasMostradasJSON.filter((x) =>{ return x.categoria == conEstaCategoria})
             empresasPorQuitar.forEach((empresa) => {
-                if(empresa.categoria.find(x => x == conEstaCategoria)){
+                if(empresa.categoria == conEstaCategoria){
                     let i = idEmpresasMostradas.indexOf(empresa.numStand);
                     idEmpresasMostradas.splice(i, 1);    
                     console.log(idEmpresasMostradas)
@@ -128,7 +138,7 @@ function removerCards(conEstaCategoria) {
             let empresasMostradasJSON = JSON.parse(empresasMostradasLS)
             let empresasPorQuitar = empresasMostradasJSON.filter((x) =>{ return x.categoria == conEstaCategoria})
             empresasPorQuitar.forEach((empresa) => {
-                if(empresa.categoria.find(x => x == conEstaCategoria)){
+                if(empresa.categoria == conEstaCategoria){
                     let i = idEmpresasMostradas.indexOf(empresa.numStand);
                     idEmpresasMostradas.splice(i, 1);    
                     console.log(idEmpresasMostradas)
@@ -155,7 +165,7 @@ function removerCards(conEstaCategoria) {
             let empresasMostradasJSON = JSON.parse(empresasMostradasLS)
             let empresasPorQuitar = empresasMostradasJSON.filter((x) =>{ return x.categoria == conEstaCategoria})
             empresasPorQuitar.forEach((empresa) => {
-                if(empresa.categoria.find(x => x == conEstaCategoria)){
+                if(empresa.categoria == conEstaCategoria){
                     let i = idEmpresasMostradas.indexOf(empresa.numStand);
                     idEmpresasMostradas.splice(i, 1);    
                     console.log(idEmpresasMostradas)
@@ -180,6 +190,9 @@ function removerCards(conEstaCategoria) {
 } 
 
 //________________________________
+let idEmpresasMostradas = [];
+let empresasMostradas = [];
+
 
 function mostrarEmpresasEncontradas(empresasEncontradas) {   
     empresasEncontradas.forEach((x) => {
@@ -289,10 +302,9 @@ function filtrarEmpresasPor(categoria) {
     agregarBotonQuitar(categoria)
     let empresasEncontradas = [];
     empresas.forEach((empresa) => {
-        empresa.categoria.forEach((categoriaDeLaEmpresa) => {
-            if (categoriaDeLaEmpresa == categoria){
-                empresasEncontradas.push(empresa)}
-            }) 
+        if (empresa.categoria === categoria){
+            empresasEncontradas.push(empresa)
+        }
     })
     mostrarEmpresasEncontradas(empresasEncontradas);
 }
@@ -310,3 +322,5 @@ regalosBoton.onclick = () => {filtrarEmpresasPor("regalos") };
 
 
 
+let empresas 
+const carrito = [];

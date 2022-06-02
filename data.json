@@ -1,0 +1,97 @@
+[
+    {
+        "nombreEmpresa": "Freshbar",
+        "numStand":1,
+        "categoria":"bebidas",
+        "productos":[{"p":"Coca-cola", "precio":"$100"}, {"p":"Sprite", "precio":"$120"}, {"p":"Fanta", "precio":"$300"}],
+        "boton":false
+    },
+
+    {
+        "nombreEmpresa":"Pop's",
+        "numStand":2,
+        "categoria":"bebidas",
+        "productos":[{"p":"Coca-cola", "precio":"$100"}, {"p":"Agua mineral", "precio":"$120"}, {"p":"Jugo de naranja", "precio":"$300"}],
+        "boton":false
+    },
+
+    {
+        "nombreEmpresa":"Batut's",
+        "numStand":3,
+        "categoria":"comidas",
+        "productos": [{"p":"Batido helado", "precio":"$200"}, {"p":"Helado", "precio":"$820"}],
+        "boton":false
+    },
+
+    {
+        "nombreEmpresa":"Al horno",
+        "numStand":4,
+        "categoria":"comidas",
+        "productos":[{"p":"Empanadas de pollo", "precio":"$100"}, {"p":"Empanadas de cebolla y queso", "precio":"$120"}, {"p":"Empanadas de choclo", "precio":"$300"}],
+        "boton":false
+    },
+
+    {
+        "nombreEmpresa":"Club del mate",
+        "numStand":5,
+        "categoria":"regalos",
+        "productos":[{"p":"Termos", "precio":"$100"}, {"p":"Matermos", "precio":"$120"}, {"p":"Mates", "precio":"$300"}],
+        "boton":false
+    },
+
+    {
+        "nombreEmpresa":"Lluvia de sandwiches",
+        "numStand":6,
+        "categoria":"comidas",
+        "productos":[{"p":"Tortuguita", "precio":"$100"}, {"p":"Sandwich de miga", "precio":"$120"}, {"p":"Pebetes", "precio":"$300"}],
+        "boton":false
+    },
+
+    {
+        "nombreEmpresa":"Hakuna Matata",
+        "numStand":7,
+        "categoria":"bebidas",
+        "productos":[{"p":"Licuados", "precio":"$100"}, {"p":"Ensalada de frutas", "precio":"$120"}],
+        "boton":false
+    },
+
+    {
+        "nombreEmpresa":"Dulce paladar",
+        "numStand":8,
+        "categoria":"comidas",
+        "productos":[{"p":"chocotorta", "precio":"$100"}, {"p":"tarta cabsha", "precio":"$120"}, {"p":"tarta de coco", "precio":"$300"}],
+        "boton":false
+    },
+
+    {
+        "nombreEmpresa":"Tu encanto",
+        "numStand":9,
+        "categoria":"regalos",
+        "productos":[{"p":"Labial", "precio":"$100"}, {"p":"rimel", "precio":"$120"}, {"p":"deliniadores", "precio":"$300"}],
+        "boton":false
+    },
+
+    {
+        "nombreEmpresa":"Tartatuille",
+        "numStand":10,
+        "categoria":"comidas",
+        "productos":[{"p":"tarta de jamon y queso", "precio":"$100"}, {"p":"tarta de verdura", "precio":"$120"}, {"p":"tarta de papa", "precio":"$300"}],
+        "boton":false
+    },
+
+    {
+        "nombreEmpresa":"Planthanos",
+        "numStand":11,
+        "categoria":"regalos",
+        "productos":[{"p":"cactus", "precio":"$100"}, {"p":"pino", "precio":"$120"}, {"p":"menta", "precio":"$300"}],
+        "boton":false
+    },
+
+    {
+        "nombreEmpresa":"Little tings",
+        "numStand":12,
+        "categoria":"regalos",
+        "productos":[{"p":"atrapasueños", "precio":"$100"}, {"p":"agendas", "precio":"$120"}, {"p":"lapiceras", "precio":"$300"}],
+        "boton":false
+    }
+]

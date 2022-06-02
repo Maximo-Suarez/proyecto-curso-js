@@ -1,3 +1,113 @@
+[
+    {
+        "nombre":,
+        "stand":,
+        "categoria":,
+        "productos":,
+        "boton":false
+    },
+
+    {
+        "nombre":,
+        "stand":,
+        "categoria":,
+        "productos":,
+        "boton":false
+    },
+
+    {
+        "nombre":,
+        "stand":,
+        "categoria":,
+        "productos":,
+        "boton":false
+    },
+
+    {
+        "nombre":,
+        "stand":,
+        "categoria":,
+        "productos":,
+        "boton":false
+    },
+
+    {
+        "nombre":,
+        "stand":,
+        "categoria":,
+        "productos":,
+        "boton":false
+    },
+
+    {
+        "nombre":,
+        "stand":,
+        "categoria":,
+        "productos":,
+        "boton":false
+    },
+
+    {
+        "nombre":,
+        "stand":,
+        "categoria":,
+        "productos":,
+        "boton":false
+    },
+
+    {
+        "nombre":,
+        "stand":,
+        "categoria":,
+        "productos":,
+        "boton":false
+    },
+
+    {
+        "nombre":,
+        "stand":,
+        "categoria":,
+        "productos":,
+        "boton":false
+    },
+
+    {
+        "nombre":,
+        "stand":,
+        "categoria":,
+        "productos":,
+        "boton":false
+    },
+
+    {
+        "nombre":,
+        "stand":,
+        "categoria":,
+        "productos":,
+        "boton":false
+    },
+
+    {
+        "nombre":,
+        "stand":,
+        "categoria":,
+        "productos":,
+        "boton":false
+    },
+
+
+
+
+
+
+
+
+
+
+]
+
+
+
 /* function verProductos(deEstaEmpresa ) {
     let empresaRelacionada = empresas.find((empresa) => empresa.numStand === deEstaEmpresa)
     let contenedorCards = document.getElementById("contenedorCards");
