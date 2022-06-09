@@ -63,7 +63,7 @@ body{
     margin: .25rem 0;
 }
 
-.probando{
+.botonAgregar{
     border: none;
     background-color: rgba(0, 0, 0, 0.216);
     border-radius: 1rem;
@@ -77,5 +77,19 @@ body{
     height: 3rem; 
     border-radius: .3rem;
 }
+
+.contenedor__link{
+    color: #000;
+}
+
+.link__carritoSvg{
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    transform: translate(-50%, -25%);
+}
+
 
 

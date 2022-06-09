@@ -55,21 +55,21 @@ function mostrarProductosDe(idDeEstaEmpresa) {
             <tr>
                 <td>${a.p}</td>
                 <td>${a.precio}</td>
-                <td><button id="emp${idDeEstaEmpresa}pA" onclick="guardarProductEnCartYLS(p1)" class="probando"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <td><button id="emp${idDeEstaEmpresa}pA" onclick="guardarProductEnCartYLS(p1)" class="botonAgregar"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg></button>
                 </td>
             </tr>
             <tr>
                 <td>${b.p}</td>
                 <td>${b.precio}</td>
-                <td><button id="emp${idDeEstaEmpresa}pB" onclick="guardarProductEnCartYLS(p2)" class="probando"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <td><button id="emp${idDeEstaEmpresa}pB" onclick="guardarProductEnCartYLS(p2)" class="botonAgregar"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg></button>
                 </td>
             </tr>
             <tr>
                 <td>${c.p}</td>
                 <td>${c.precio}</td>
-                <td><button id="emp${idDeEstaEmpresa}pC" onclick="guardarProductEnCartYLS(p3)" class="probando"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <td><button id="emp${idDeEstaEmpresa}pC" onclick="guardarProductEnCartYLS(p3)" class="botonAgregar"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg></button>
                 </td>
             </tr>
