@@ -1,5 +1,5 @@
 
-let productosAgregadosLS = localStorage.getItem(`productosSeleccionados`)
+let productosAgregadosLS = sessionStorage.getItem(`productosSeleccionados`)
 console.log(productosAgregadosLS)
 let empresasMostradasJSON = JSON.parse(productosAgregadosLS)
 console.log(productosAgregadosLS)

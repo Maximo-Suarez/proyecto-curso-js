@@ -19,7 +19,7 @@
         "nombreEmpresa":"Batut's",
         "numStand":3,
         "categoria":"comidas",
-        "productos": [{"p":"Batido helado", "precio":"$200"}, {"p":"Helado", "precio":"$820"}],
+        "productos": [{"p":"Batido helado", "precio":"$200"}, {"p":"1kg Helado", "precio":"$820"}, {"p":"1/2 kg Helado", "precio":"530"}],
         "boton":false
     },
 
@@ -51,7 +51,7 @@
         "nombreEmpresa":"Hakuna Matata",
         "numStand":7,
         "categoria":"bebidas",
-        "productos":[{"p":"Licuados", "precio":"$100"}, {"p":"Ensalada de frutas", "precio":"$120"}],
+        "productos":[{"p":"Licuados", "precio":"$100"}, {"p":"Ensalada de frutas", "precio":"$200"}, {"p":"Compota", "precio":"$150"}],
         "boton":false
     },
 

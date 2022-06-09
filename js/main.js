@@ -10,7 +10,7 @@ pedirData()
 function guardarProductEnCartYLS(producto){
     carrito.push(producto)
     let carritoJSON = JSON.stringify(carrito)
-    localStorage.setItem(`productosSeleccionados`, carritoJSON)
+    sessionStorage.setItem(`productosSeleccionados`, carritoJSON)
     Toastify({
         text: `"${producto[0]}" agregado al carrito`,
         duration: 2000,
@@ -25,14 +25,12 @@ function guardarProductEnCartYLS(producto){
 
 function mostrarProductosDe(idDeEstaEmpresa) {
     let emp = [...empresas]
+    console.log(emp)
     let empresa =emp[idDeEstaEmpresa-1]
-    console.log(empresa)
-    let [a,b,c,d] = empresa.productos
+    let [a,b,c] = empresa.productos
     p1 = [a.p, a.precio, idDeEstaEmpresa]
-    console.log(p1)
     p2 = [b.p, b.precio, idDeEstaEmpresa]
     p3 = [c.p, c.precio, idDeEstaEmpresa]
-
     empresa.boton? empresa.boton = false : empresa.boton = true;
     if(empresa.boton){
         //boton X
@@ -41,16 +39,13 @@ function mostrarProductosDe(idDeEstaEmpresa) {
         //2do div
         let elemento2 = document.getElementById(`infoDeEmp${idDeEstaEmpresa}`)
         elemento2.classList.add("col-3")
-        let clasesDeElemento2 = elemento2.classList
-        elemento2.classList.remove(clasesDeElemento2[1]) 
+        elemento2.classList.remove("col-6") 
         //3er div
         let elemento3 = document.getElementById(`productDeLaEmpNum${idDeEstaEmpresa}`)
         elemento3.classList.add("col-4", "contenedorProductos")
-        let clasesDeElemento3 = elemento3.classList
-        elemento3.classList.remove(clasesDeElemento3[2]) 
+        elemento3.classList.remove("col-2") 
         let catalogo = document.createElement("div")
         catalogo.setAttribute("id", `catalogoEmp${idDeEstaEmpresa}`)
-        //let cantDeCeldas = (empresa.productos).length
         catalogo.innerHTML = `
         <table>
             <tr>
@@ -84,17 +79,13 @@ function mostrarProductosDe(idDeEstaEmpresa) {
     }  else{
         //2do div        
         let elemento2 = document.getElementById(`infoDeEmp${idDeEstaEmpresa}`)
-        elemento2.classList.add("col-3")
-        let clasesDeElemento2 = elemento2.classList
-        elemento2.classList.remove(clasesDeElemento2[1]) 
+        elemento2.classList.remove("col-3") 
         elemento2.classList.add("col-6")
         //3er div
         let elemento3 = document.getElementById(`productDeLaEmpNum${idDeEstaEmpresa}`)
-        elemento3.classList.add("contenedorProductos", "col-4")
-        let clasesDeElemento3 = elemento3.classList
-        elemento3.classList.remove(clasesDeElemento3[3]) 
-        elemento3.classList.remove(clasesDeElemento3[2]) 
+        elemento3.classList.remove("contenedorProductos", "col-4")
         elemento3.classList.add("col-2")
+
         elemento3.innerHTML=`<button class="btn btn-warning" id="VerProductDeEmpNum${idDeEstaEmpresa}" onclick="mostrarProductosDe(${idDeEstaEmpresa})">Ver productos</button>`
     }
 }
@@ -201,7 +192,6 @@ function mostrarEmpresasEncontradas(empresasEncontradas) {
             empresasEncontradas.forEach((empresa) =>{
                 let card = document.createElement("article");
                 card.classList.add("col-sm-10","col-lg-12", "card","shadow-sm", `${empresa.categoria}`);
-                //<div class="d-flex align-items-center flex-sm-column flex-lg-row">
                 card.innerHTML= `
                 <div class="row align-items-center" id="contElementEmpresa${empresa.numStand}">
                     <div class="w-25 col-4">
