@@ -1,18 +1,53 @@
+//localStorage.clear()
 
 const pedirData = async () => {
     const respuesta = await
     fetch(`https://raw.githubusercontent.com/Maximo-Suarez/proyecto-curso-js/master/data.json`)
     empresas = await respuesta.json()
-    console.log(empresas)
 } 
 pedirData() 
 
 function guardarProductEnCartYLS(producto){
-    carrito.push(producto)
-    let carritoJSON = JSON.stringify(carrito)
-    sessionStorage.setItem(`productosSeleccionados`, carritoJSON)
+    if (carrito.includes(producto)) {
+        producto.cantidad += 1;
+        localStorage.setItem(`deLa${producto.deLaEmp}producto${producto.opcion}`, JSON.stringify(producto))
+    } else {
+        carrito.push(producto)
+        localStorage.setItem(`deLa${producto.deLaEmp}producto${producto.opcion}`, JSON.stringify(producto))
+
+    }
+
+
+
+
+/*     if(carrito.includes(producto)){
+        producto.cantidad += 1
+        let productosYaAgregados = localStorage.getItem(`productosAgregados`)
+        if (productosYaAgregados != null && productosYaAgregados.includes(producto.producto)){
+            let productoYaAgregado = JSON.parse(localStorage.getItem(`producto${producto.opcion}Stand${producto.deLaEmp}`))
+            if (productoYaAgregado != null) {
+                producto.cantidad += productoYaAgregado.cantidad
+                localStorage.setItem(`producto${producto.opcion}Stand${producto.deLaEmp}`, JSON.stringify(producto))
+            }
+        }
+        localStorage.setItem(`producto${producto.opcion}Stand${producto.deLaEmp}`, JSON.stringify(producto))
+    } else{
+        carrito.push(producto)
+        let productosYaAgregados = localStorage.getItem(`productosAgregados`)
+        if (productosYaAgregados != null && productosYaAgregados.includes(producto.producto)){
+            let productoYaAgregado = JSON.parse(localStorage.getItem(`producto${producto.opcion}Stand${producto.deLaEmp}`))
+            if (productoYaAgregado != null) {
+                producto.cantidad += productoYaAgregado.cantidad
+                localStorage.setItem(`producto${producto.opcion}Stand${producto.deLaEmp}`, JSON.stringify(producto))
+            }
+        } else{
+            localStorage.setItem(`producto${producto.opcion}Stand${producto.deLaEmp}`, JSON.stringify(producto))
+        }
+    }
+ */
+
     Toastify({
-        text: `"${producto[0]}" agregado al carrito`,
+        text: `"${producto.producto}" agregado al carrito`,
         duration: 2000,
         gravity: `bottom`,
         position: `right`,
@@ -25,12 +60,11 @@ function guardarProductEnCartYLS(producto){
 
 function mostrarProductosDe(idDeEstaEmpresa) {
     let emp = [...empresas]
-    console.log(emp)
     let empresa =emp[idDeEstaEmpresa-1]
     let [a,b,c] = empresa.productos
-    p1 = [a.p, a.precio, idDeEstaEmpresa]
-    p2 = [b.p, b.precio, idDeEstaEmpresa]
-    p3 = [c.p, c.precio, idDeEstaEmpresa]
+    p1 = {producto: a.p, precio: a.precio, deLaEmp: idDeEstaEmpresa, opcion :"a", cantidad: 1};
+    p2 = {producto: b.p, precio: b.precio, deLaEmp: idDeEstaEmpresa, opcion :"b", cantidad: 1};
+    p3 = {producto: c.p, precio: c.precio, deLaEmp: idDeEstaEmpresa, opcion :"c", cantidad: 1};
     empresa.boton? empresa.boton = false : empresa.boton = true;
     if(empresa.boton){
         //boton X
@@ -104,7 +138,6 @@ function removerCards(conEstaCategoria) {
                 if(empresa.categoria == conEstaCategoria){
                     let i = idEmpresasMostradas.indexOf(empresa.numStand);
                     idEmpresasMostradas.splice(i, 1);    
-                    console.log(idEmpresasMostradas)
                     let cards = document.getElementsByClassName(conEstaCategoria) ;
                     for (let card of cards) {
                         let clases = card.classList;
@@ -130,7 +163,6 @@ function removerCards(conEstaCategoria) {
                 if(empresa.categoria == conEstaCategoria){
                     let i = idEmpresasMostradas.indexOf(empresa.numStand);
                     idEmpresasMostradas.splice(i, 1);    
-                    console.log(idEmpresasMostradas)
 
                     let cards = document.getElementsByClassName(conEstaCategoria) ;
                     for (let card of cards) {
@@ -157,7 +189,6 @@ function removerCards(conEstaCategoria) {
                 if(empresa.categoria == conEstaCategoria){
                     let i = idEmpresasMostradas.indexOf(empresa.numStand);
                     idEmpresasMostradas.splice(i, 1);    
-                    console.log(idEmpresasMostradas)
 
                     let cards = document.getElementsByClassName(conEstaCategoria) ;
                     for (let card of cards) {
@@ -217,7 +248,6 @@ function mostrarEmpresasEncontradas(empresasEncontradas) {
             })
         }
     })
-    console.log(idEmpresasMostradas)
 
 }
 //________________________________
