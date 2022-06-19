@@ -91,5 +91,7 @@ body{
     transform: translate(-50%, -25%);
 }
 
-
+.prueba > *{
+    text-align: center;
+}
 

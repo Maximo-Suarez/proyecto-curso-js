@@ -1,11 +1,10 @@
-//localStorage.clear()
 
-const pedirData = async () => {
-    const respuesta = await
-    fetch(`https://raw.githubusercontent.com/Maximo-Suarez/proyecto-curso-js/master/data.json`)
-    empresas = await respuesta.json()
-} 
-pedirData() 
+fetch("../data.json")
+    .then((res) => res.json())
+    .then((data) => {
+    inicio(data);
+});
+
 
 function guardarProductEnCartYLS(producto){
     if (carrito.includes(producto)) {
@@ -14,38 +13,7 @@ function guardarProductEnCartYLS(producto){
     } else {
         carrito.push(producto)
         localStorage.setItem(`deLa${producto.deLaEmp}producto${producto.opcion}`, JSON.stringify(producto))
-
     }
-
-
-
-
-/*     if(carrito.includes(producto)){
-        producto.cantidad += 1
-        let productosYaAgregados = localStorage.getItem(`productosAgregados`)
-        if (productosYaAgregados != null && productosYaAgregados.includes(producto.producto)){
-            let productoYaAgregado = JSON.parse(localStorage.getItem(`producto${producto.opcion}Stand${producto.deLaEmp}`))
-            if (productoYaAgregado != null) {
-                producto.cantidad += productoYaAgregado.cantidad
-                localStorage.setItem(`producto${producto.opcion}Stand${producto.deLaEmp}`, JSON.stringify(producto))
-            }
-        }
-        localStorage.setItem(`producto${producto.opcion}Stand${producto.deLaEmp}`, JSON.stringify(producto))
-    } else{
-        carrito.push(producto)
-        let productosYaAgregados = localStorage.getItem(`productosAgregados`)
-        if (productosYaAgregados != null && productosYaAgregados.includes(producto.producto)){
-            let productoYaAgregado = JSON.parse(localStorage.getItem(`producto${producto.opcion}Stand${producto.deLaEmp}`))
-            if (productoYaAgregado != null) {
-                producto.cantidad += productoYaAgregado.cantidad
-                localStorage.setItem(`producto${producto.opcion}Stand${producto.deLaEmp}`, JSON.stringify(producto))
-            }
-        } else{
-            localStorage.setItem(`producto${producto.opcion}Stand${producto.deLaEmp}`, JSON.stringify(producto))
-        }
-    }
- */
-
     Toastify({
         text: `"${producto.producto}" agregado al carrito`,
         duration: 2000,
@@ -54,7 +22,6 @@ function guardarProductEnCartYLS(producto){
         style:{
             background: "rgba(253,29,29,1)", 
         }
-
     }).showToast();
 }
 
@@ -62,9 +29,9 @@ function mostrarProductosDe(idDeEstaEmpresa) {
     let emp = [...empresas]
     let empresa =emp[idDeEstaEmpresa-1]
     let [a,b,c] = empresa.productos
-    p1 = {producto: a.p, precio: a.precio, deLaEmp: idDeEstaEmpresa, opcion :"a", cantidad: 1};
-    p2 = {producto: b.p, precio: b.precio, deLaEmp: idDeEstaEmpresa, opcion :"b", cantidad: 1};
-    p3 = {producto: c.p, precio: c.precio, deLaEmp: idDeEstaEmpresa, opcion :"c", cantidad: 1};
+    p1 = {producto: a.p, precio: a.precio, deLaEmp: idDeEstaEmpresa, opcion : 1, cantidad: 1};
+    p2 = {producto: b.p, precio: b.precio, deLaEmp: idDeEstaEmpresa, opcion : 2, cantidad: 1};
+    p3 = {producto: c.p, precio: c.precio, deLaEmp: idDeEstaEmpresa, opcion : 3, cantidad: 1};
     empresa.boton? empresa.boton = false : empresa.boton = true;
     if(empresa.boton){
         //boton X
@@ -263,7 +230,7 @@ function agregarBotonQuitar(enLaCategoria) {
             } else {
                 validarBoton1 = true;
                 let botonQuitar1 = document.createElement("button");
-                botonQuitar1.classList.add("quitarComidas")
+                botonQuitar1.classList.add("quitarComidas", "btn","btn-danger", "btn-sm")
                 botonQuitar1.setAttribute("id", "quitarComidas")
                 botonQuitar1.innerHTML=`
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
@@ -281,7 +248,7 @@ function agregarBotonQuitar(enLaCategoria) {
             } else {
                 validarBoton2 = true;
                 let botonQuitar2 = document.createElement("button");
-                botonQuitar2.classList.add("quitarBebidas")
+                botonQuitar2.classList.add("quitarBebidas", "btn","btn-danger", "btn-sm")
                 botonQuitar2.setAttribute("id", "quitarBebidas")
                 botonQuitar2.innerHTML=`
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
@@ -299,7 +266,7 @@ function agregarBotonQuitar(enLaCategoria) {
                 validarBoton3 = true;
                 let boton3 = document.getElementById("boton-3")
                 let botonQuitar3 = document.createElement("button");
-                botonQuitar3.classList.add("quitarRegalos")
+                botonQuitar3.classList.add("quitarRegalos", "btn","btn-danger", "btn-sm")
                 botonQuitar3.setAttribute("id", "quitarRegalos")
                 botonQuitar3.innerHTML=`
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
@@ -327,18 +294,20 @@ function filtrarEmpresasPor(categoria) {
     mostrarEmpresasEncontradas(empresasEncontradas);
 }
 
-
-
-let comidasBoton = document.getElementById("comidas");
-comidasBoton.onclick = () => {filtrarEmpresasPor("comidas") };
-
-let bebidasBoton = document.getElementById("bebidas");
-bebidasBoton.onclick = () => {filtrarEmpresasPor("bebidas") };
-
-let regalosBoton = document.getElementById("regalos");
-regalosBoton.onclick = () => {filtrarEmpresasPor("regalos") };
-
-
-
 let empresas 
 const carrito = [];
+
+
+function inicio(data) {
+    console.log(data)
+    empresas = data
+    let comidasBoton = document.getElementById("comidas");
+    comidasBoton.onclick = () => {filtrarEmpresasPor("comidas") };
+    
+    let bebidasBoton = document.getElementById("bebidas");
+    bebidasBoton.onclick = () => {filtrarEmpresasPor("bebidas") };
+    
+    let regalosBoton = document.getElementById("regalos");
+    regalosBoton.onclick = () => {filtrarEmpresasPor("regalos") };
+}
+

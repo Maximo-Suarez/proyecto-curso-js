@@ -19,7 +19,7 @@
         "nombreEmpresa":"Batut's",
         "numStand":3,
         "categoria":"comidas",
-        "productos": [{"p":"Batido helado", "precio":"$200"}, {"p":"1kg Helado", "precio":"$820"}, {"p":"1/2 kg Helado", "precio":"530"}],
+        "productos": [{"p":"Batido helado", "precio":"$200"}, {"p":"1kg Helado", "precio":"$820"}, {"p":"1/2 kg Helado", "precio":"$530"}],
         "boton":false
     },
 
