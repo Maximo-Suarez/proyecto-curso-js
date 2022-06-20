@@ -29,7 +29,7 @@ body{
     border-left: #fff solid 1px;
 
 }
-.inicio__card{
+.inicio__card, .tienda__card{
     margin: 2rem !important;
     width: 50vw;
 
