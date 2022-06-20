@@ -161,6 +161,29 @@ function borrar() {
     pregunta()
 }
 
+function mostrarPedido(productos) {
+    let nombreDeLosProductos = []
+    let totalAPagar = 0
+    let totalDeEmp = ""
+    productos.forEach(element => {
+        nombreDeLosProductos.push(element.producto)
+        totalAPagar += parseFloat((element.precio).slice(1))
+        totalDeEmp.includes(element.deLaEmp)? console.log("control: si esta el stand(" + element.deLaEmp +")") :  totalDeEmp += ` - ${element.deLaEmp}`; //control para que el numero de los stands elegidos no se repita
+
+    });
+    Swal.fire({
+        icon: 'success',
+        title: 'Tu pedido fue realizado con exito!',
+        text: 'Pediste: ' + nombreDeLosProductos +` Retirá tu pedido en los stand/s: ` +  totalDeEmp +  `. Tu total a pagar es de: ` + totalAPagar,
+        confirmButtonText: `OK!`
+    })
+}
+
+function realizarPedido() {
+    let productosAgregadosLS = JSON.parse( localStorage.getItem(`productosAgregados`))
+    productosAgregadosLS == null? aviso() : productosAgregadosLS.length > 0 ? mostrarPedido(productosAgregadosLS) : aviso()
+}
+
 let productosSeleccionados = []
 let productosAgregadosLS = localStorage.getItem(`productosAgregados`)
 
@@ -170,3 +193,5 @@ pregunta()
 let limpiarBoton = document.getElementById("limpiarCart");
 limpiarBoton.onclick = () => {borrar() };
 
+let realizarPedidoBoton = document.getElementById("realizarPedido");
+realizarPedidoBoton.onclick = () => {realizarPedido() };
